@@ -1,0 +1,30 @@
+{% extends 'base.html' %}
+{% block content %} 
+
+{% if messages %}
+	{% for message in messages%}
+		<p>{{message}}</p>
+	{% endfor %}
+	{% endif %}
+	<div>
+		<a href="{{customer.tel_no}}/edit_customer_data">EDIT DETAIS</a>
+	</div>
+	Telephone Number : {{customer.tel_no}}<br>
+	Name : {{customer.name}}<br>
+	Mobile : {{customer.mobile}}<br>
+	Email : {{customer.mail}}<br>
+	Image : {{customer.img}}<br>
+	Status :{{customer.status}}
+
+	<br><br>
+	<h3>Plan Details</h3>
+	{% if plan %}
+		plan Name : {{plan.plan_name}}<br>
+		plan ID : {{plan.plan_id}}<br>
+		plan Amount : {{plan.plan_amount}}<br>
+		plan Details: {{plan.plan_detail}}<br>
+	{% elif plan_error %}
+		<h3>{{ plan_error }}</h3>
+	{% endif %}
+{% endblock content %}
+	

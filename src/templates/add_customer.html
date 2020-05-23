@@ -1,0 +1,56 @@
+{% extends 'base.html' %}
+
+{% block content %}
+	{% if messages %}
+	{% for message in messages%}
+		<p>{{message}}</p>
+	{% endfor %}
+	{% endif %}
+<form action="" method="post">
+	{% csrf_token %}
+	<div class="" data-validate = "this field is required">
+		<p>Name</p>
+		<input class="" type="text" name="tel_no" placeholder="Telephone Number">
+		<span class=""></span>
+	</div>
+
+	<div class="" data-validate = "this field is required">
+		<input class="" type="text" name="customer_name" placeholder="Name">
+		<span class=""></span>
+	</div>
+
+	<div class="" data-validate = "this field is required">
+		<input class="" type="text" name="customer_mobile" placeholder="Mobile Number">
+		<span class=""></span>
+	</div>
+
+	<div class="" data-validate = "this field is required">
+		<input class="" type="text" name="customer_mail" placeholder="Mail ID">
+		<span class=""></span>
+	</div>
+	<!--<div class="" data-validate = "this field is required">
+		<input class="" type="text" name="customer_" placeholder="">
+		<span class=""></span>
+	</div>-->
+
+	<label>Status :</label>
+	<select name="status">
+		<option value="ACTIVE" >ACTIVE</option>
+		<option value="SUSPENDED" >SUSPENDED</option>
+		<option value="DEACTIVE" selected>DEACTIVE</option>
+	</select>
+
+	<label>Select a plan:</label>
+	<select name="plan_id">
+		<option value="" selected ></option>
+		{% for plan in plans%}
+
+			<option value="{{plan}}">{{plan}}</option>
+		{% endfor %}
+	</select>
+<br>
+	<button>submit</button>
+
+
+</form>
+{% endblock content %}

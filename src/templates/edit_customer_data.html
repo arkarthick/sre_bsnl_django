@@ -1,0 +1,61 @@
+{% extends 'base.html' %}
+
+{% block content %}
+{% if messages %}
+	{% for message in messages%}
+		<p>{{message}}</p>
+	{% endfor %}
+	{% endif %}
+<form action="" method="post">
+	{% csrf_token %}
+	
+	<!--<div class="" data-validate = "this field is required">
+		<p>Name</p>
+		<input class="" type="text" name="tel_no" value="" placeholder="Telephone Number">
+		<span class=""></span>
+	</div> -->
+	<h5>{{customer.tel_no}}</h5>
+	<br>
+	<div class="" data-validate = "this field is required">
+		<input class="" type="text" name="customer_name" value="{% if customer.name %}{{customer.name}}{%endif%}" placeholder="Name">
+		<span class=""></span>
+	</div>
+
+	<div class="" data-validate = "this field is required">
+		<input class="" type="text" name="customer_mobile" value="{% if customer.mobile %}{{customer.mobile}}{%endif%}" placeholder="Mobile Number">
+		<span class=""></span>
+	</div>
+
+	<div class="" data-validate = "this field is required">
+		<input class="" type="text" name="customer_mail" value="{% if customer.mail %}{{customer.mail}}{%endif%}" placeholder="Mail ID">
+		<span class=""></span>
+	</div>
+	<!--<div class="" data-validate = "this field is required">
+		<input class="" type="text" name="customer_" value="customer." placeholder="">
+		<span class=""></span>
+	</div>-->
+
+	<label>Status :</label>
+	<select name="status">
+
+		<option value="{{customer.status}}" selected>{{customer.status}}</option>
+		<option value="ACTIVE">ACTIVE</option>
+		<option value="SUSPENDED">SUSPENDED</option>
+		<option value="DEACTIVE">DEACTIVE</option>
+	</select>
+
+	<label for="cars">Select a plan:</label>
+	<select id="cars" name="plan_id">
+		<option value="{{customer.plan_id}}" selected>{{customer.plan_id}}</option>
+		{% for plan in plans%}
+
+			<option value="{{plan}}">{{plan}}</option>
+		{% endfor %}
+	</select>
+	{{plans}}
+<br>
+	<input type="submit" name="btn">
+
+
+</form>
+{% endblock content %}
